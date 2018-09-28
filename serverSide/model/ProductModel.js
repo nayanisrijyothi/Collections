@@ -26,6 +26,21 @@ ProductModel.prototype.update = function (req, data, callback) {
 ProductModel.prototype.remove = function (req, callback) {
     this.cm.remove({ _id: req.params.id }, callback);
 };
+ProductModel.prototype.aggregate = function (req, callback) {
+    this.cm.aggregate([
+        {
+            "$lookup": {
+                "from": "user",
+                "localField": "Location",
+                "foreignField": "Location",
+                "as": "product_types"
+            }
+        }
+    ],function(err,data){
+        console.log(data);
+        callback(err,data);
+    });
+};
 
 
 module.exports = ProductModel;

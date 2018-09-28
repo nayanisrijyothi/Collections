@@ -4,9 +4,13 @@ function ProductController() {
     this.model = new ProductModel();
 }
 ProductController.prototype.getAll = function (req, res) {
-    this.model.get(req, function (err, data) {
+    // this.model.get(req, function (err, data) {
+    //     res.status(200).json(data);
+    // });
+    this.model.aggregate(req, function (err, data) {
         res.status(200).json(data);
     });
+
 };
 ProductController.prototype.getById = function (req, res, next) {
     console.log(req.params);
