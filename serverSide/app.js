@@ -18,7 +18,7 @@ mongoose.connection.on('disconnected', function () {
 });
 app.get('/', function (req, res) {
     return res.send({
-        message: "Welcome To TalentScreen!"
+        message: "Welcome To API!"
     });
 });
 function parallel(middlewares) {
